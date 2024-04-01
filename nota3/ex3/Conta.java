@@ -1,26 +1,63 @@
 package nota3.ex3;
+import javax.swing.*;
 
-public abstract class Conta {
+public class Conta {
+    private String nomeTitular= "Lucas Barroso";
+    protected double saldo  ;
+    protected double sacar;
+    private double depositar;
 
-    protected String titular;
-    protected double saldo;
-
-    public Conta(String titular) {
-        this.titular = "João Silva";
-        this.saldo = 0.0;
+    public double getDepositar() {
+        return depositar;
     }
 
-    public abstract void depositar(double valor);
+    public void setDepositar(double depositar) {
+        this.depositar = depositar;
+    }
 
-    public abstract void sacar(double valor);
+    public String getNomeTitular() {
+        return nomeTitular;
+    }
 
-    public abstract void exibirDados();
-
-    public String getTitular() {
-        return titular;
+    public void setNomeTitular(String nomeTitular) {
+        this.nomeTitular = nomeTitular;
     }
 
     public double getSaldo() {
         return saldo;
     }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public double getSacar() {
+        return sacar;
+    }
+
+    public void setSacar(double sacar) {
+        this.sacar = sacar;
+    }
+
+    public void sacarvalor (){
+        if ( saldo >=sacar){
+            saldo = saldo-sacar;
+            JOptionPane.showMessageDialog(null, "Saque realizado");
+        }
+
+         else  {
+            JOptionPane.showMessageDialog(null, "Saque não pode ser realizado : saldo insuficiente");
+
+        }
+
+    }
+    public void depositarvalor() {
+        saldo = depositar+saldo;
+        JOptionPane.showMessageDialog(null, "Deposito realizado com sucesso ");
+    }
+
+    public void dadosConta(){
+        JOptionPane.showMessageDialog(null, "Nome do titular da conta : " + nomeTitular + "Saldo da conta  :" + saldo);
+    }
 }
+
